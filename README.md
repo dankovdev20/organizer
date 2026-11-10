@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Organizer
 
-## Getting Started
+A mobile-first PWA for iOS: a quick expense tracker with charts, a fast "inbox" for notes, and (later) a daily routine calendar with push reminders.
 
-First, run the development server:
+> **Status:** work in progress — stage 1 of 12 (project foundation). See the [roadmap](#roadmap).
+
+## Why
+
+Banking apps show _that_ money was spent, not _what on_ or _where_. Organizer makes adding an expense a few-second, step-by-step flow and turns the data into clear statistics.
+
+## Key ideas
+
+- **Local-first:** data lives in the browser (IndexedDB); the app works offline and without an account.
+- **Optional account:** Supabase provides auth plus automatic backup and sync across devices.
+- **Money done right:** amounts are stored as integers in minor units (no floating-point errors), with an exchange-rate snapshot per expense.
+
+Design decisions and their trade-offs are documented in [`docs/decisions.md`](docs/decisions.md).
+
+## Tech stack
+
+- [Next.js](https://nextjs.org/) (App Router), React, TypeScript (strict)
+- Tailwind CSS, Framer Motion
+- Dexie.js (IndexedDB), Serwist (service worker) — planned
+- Supabase: PostgreSQL, Row Level Security, Edge Functions — planned
+- ESLint, Prettier; Vitest, Testing Library, Playwright — planned
+
+## Getting started
+
+Requirements: Node.js 26 ([nvm](https://github.com/nvm-sh/nvm) recommended).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+nvm use        # switches to the Node version from .nvmrc
+npm ci         # installs exact dependency versions from package-lock.json
+npm run dev    # starts the dev server at http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script                 | What it does                               |
+| ---------------------- | ------------------------------------------ |
+| `npm run dev`          | Start the development server               |
+| `npm run build`        | Production build                           |
+| `npm run start`        | Serve the production build                 |
+| `npm run lint`         | Lint with ESLint                           |
+| `npm run typecheck`    | Type-check with `tsc --noEmit`             |
+| `npm run format`       | Format all files with Prettier             |
+| `npm run format:check` | Check formatting without changing files    |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Roadmap
 
-## Learn More
+0. ✅ Planning: user flows, screens, data model
+1. 🚧 Foundation: tooling, CI, deployment, mobile layout
+2. Data layer (Dexie)
+3. Quick notes
+4. Add expense (step-by-step flow)
+5. Expense list, editing, filters, search
+6. PWA: install, offline, testing on a real iPhone
+7. Statistics and charts
+8. Map and geolocation
+9. Photos and receipt scanning (OCR)
+10. Supabase: auth, sync, backup
+11. Routine calendar with push reminders
+12. Polish: accessibility, e2e tests, Lighthouse, demo
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[MIT](LICENSE)
