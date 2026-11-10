@@ -1,6 +1,6 @@
 import type { SyncEntity, IsoDateString } from './sync';
-import type { CurrencyCode } from '../../consts/currencies';
-import type { CategoryKey } from '../../consts/categories';
+import type { CurrencyCode } from '@/consts/currencies';
+import type { CategoryKey } from '@/consts/categories';
 
 export interface Expense extends SyncEntity {
   name: string; // название расхода, создается пользователем
