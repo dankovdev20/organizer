@@ -9,5 +9,5 @@ export const db = new Dexie('organizerDB') as Dexie & {
 
 db.version(1).stores({
   expenses: 'id, occurredAt, categoryKey, updatedAt',
-  quickNotes: 'id, createdAt, updatedAt'
+  quickNotes: 'id, createdAt, updatedAt',
 });
