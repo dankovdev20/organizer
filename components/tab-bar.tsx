@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { FaChartPie, FaHouse, FaNoteSticky, FaPlus, FaCalendar } from 'react-icons/fa6';
+import { isActivePath } from '@/lib/is-active-path';
 
 const TABS = [
   { href: '/', label: 'Home', icon: FaHouse, kind: 'tab' },
@@ -10,11 +11,6 @@ const TABS = [
   { href: '/notes', label: 'Notes', icon: FaNoteSticky, kind: 'tab' },
   { href: '/calendar', label: 'Calendar', icon: FaCalendar, kind: 'tab' },
 ] as const;
-
-function isActivePath(pathname: string, href: string): boolean {
-  if (href === '/') return pathname === '/';
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
 
 export function TabBar() {
   const pathname = usePathname();

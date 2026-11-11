@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   checks:
-    name: Lint, typecheck, format, build
+    name: Lint, typecheck, test, format, build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,6 +35,9 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Test
+        run: npm run test
 
       - name: Format check
         run: npm run format:check
