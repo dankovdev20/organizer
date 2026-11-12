@@ -2,7 +2,7 @@
 
 A mobile-first PWA for iOS: a quick expense tracker with charts, a fast "inbox" for notes, and (later) a daily routine calendar with push reminders.
 
-> **Status:** work in progress — stage 1 of 12 (project foundation). See the [roadmap](#roadmap).
+> **Status:** work in progress — stage 3 of 12 (quick notes). See the [roadmap](#roadmap).
 
 ## Why
 
@@ -20,9 +20,11 @@ Design decisions and their trade-offs are documented in [`docs/decisions.md`](do
 
 - [Next.js](https://nextjs.org/) (App Router), React, TypeScript (strict)
 - Tailwind CSS, Framer Motion
-- Dexie.js (IndexedDB), Serwist (service worker) — planned
+- Dexie.js (IndexedDB) with reactive queries via `useLiveQuery`
+- Serwist (service worker) — planned
 - Supabase: PostgreSQL, Row Level Security, Edge Functions — planned
-- ESLint, Prettier; Vitest, Testing Library, Playwright — planned
+- ESLint, Prettier, Vitest
+- Testing Library, Playwright — planned
 
 ## Getting started
 
@@ -43,15 +45,16 @@ npm run dev    # starts the dev server at http://localhost:3000
 | `npm run start`        | Serve the production build                 |
 | `npm run lint`         | Lint with ESLint                           |
 | `npm run typecheck`    | Type-check with `tsc --noEmit`             |
+| `npm run test`         | Run unit tests with Vitest                 |
 | `npm run format`       | Format all files with Prettier             |
 | `npm run format:check` | Check formatting without changing files    |
 
 ## Roadmap
 
 0. ✅ Planning: user flows, screens, data model
-1. 🚧 Foundation: tooling, CI, deployment, mobile layout
-2. Data layer (Dexie)
-3. Quick notes
+1. ✅ Foundation: tooling, CI, deployment, mobile layout
+2. ✅ Data layer (Dexie)
+3. 🚧 Quick notes
 4. Add expense (step-by-step flow)
 5. Expense list, editing, filters, search
 6. PWA: install, offline, testing on a real iPhone
