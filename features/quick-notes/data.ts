@@ -2,8 +2,7 @@ import { db } from '@/lib/db';
 import { newId, nowISO } from '@/lib/sync-helpers';
 import type { QuickNote } from '@/types/quicknote';
 import type { UUID } from '@/types/sync';
-
-type QuickNoteInput = Pick<QuickNote, 'title' | 'content'>;
+import type { QuickNoteInput } from './schema';
 
 // Создать быструю заметку
 export async function createQuickNote(input: QuickNoteInput): Promise<UUID> {
