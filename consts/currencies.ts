@@ -1,6 +1,5 @@
 export const RATE_SCALE = 10000; // фиксируем курс валюты с точностью до 4 знаков после запятой
 export const RATE_SUM_SCALE = 100; // фиксируем сумму расхода с точностью до 2 знаков после запятой
-
 export interface Currency {
   readonly code: string; // код валюты (например, USD, EUR, PLN)
   readonly label: string; // текст для UI, можно менять и переводить
@@ -16,3 +15,9 @@ export const CURRENCIES = [
 ] as const satisfies readonly Currency[];
 
 export type CurrencyCode = (typeof CURRENCIES)[number]['code'];
+
+export function getRateToPln(currency: CurrencyCode): number {
+  const found = CURRENCIES.find((c) => c.code === currency);
+  if (!found) throw new Error(`Unknown currency: ${currency}`);
+  return found.rate;
+}
