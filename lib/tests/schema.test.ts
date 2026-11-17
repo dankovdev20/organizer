@@ -1,4 +1,4 @@
-import { quickNoteInputSchema } from './schema';
+import { quickNoteInputSchema } from '@/features/quick-notes/schema';
 import { describe, it, expect } from 'vitest';
 
 describe('quickNoteInputSchema', () => {
